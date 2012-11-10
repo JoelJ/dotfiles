@@ -1,0 +1,8 @@
+# 
+# Bash prompt: shows the current directory and time on one line, then the current user on the commandline.
+#
+if [ "${USER}" == "root" ]; then
+	PS1="$(tput setaf 2)\w $(tput setaf 3)(\t)\r\n$(tput setaf 1)\u #$(tput sgr0) "
+else
+	PS1="$(tput setaf 2)\w $(tput setaf 3)(\t)$(tput sgr0)\r\n\u $ "
+fi
