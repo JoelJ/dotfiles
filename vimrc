@@ -54,8 +54,11 @@ set undodir=~/.vim/undo
 "
 " Commenting blocks
 "
-"autocmd FileType c,cpp,java 	let b:cmtldr = '//'
-"autocmd FileType sh,python	 	let b:cmtldr = '#'
-"autocmd FileType vim		 	let b:cmtldr = '"'
-noremap <buffer> <Leader>c :s,^\(\s*\)[^# \t]\@=,\1# ,e<CR>:nohls<CR>zvj
-noremap <buffer> <Leader>u :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
+autocmd FileType c,cpp,java noremap <buffer> <Leader>c :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
+autocmd FileType sh,python  noremap <buffer> <Leader>c :s,^\(\s*\)[^# \t]\@=,\1# ,e<CR>:nohls<CR>zvj
+autocmd FileType vim        noremap <buffer> <Leader>c :s,^\(\s*\)[^\" \t]\@=,\1\" ,e<CR>:nohls<CR>zvj
+
+autocmd Filetype c,cpp,java	noremap <buffer> <Leader>u :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
+autocmd Filetype sh,python	noremap <buffer> <Leader>u :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
+autocmd Filetype vim		noremap <buffer> <Leader>u :s,^\(\s*\)\" \s\@!,\1,e<CR>:nohls<CR>zvj
+
