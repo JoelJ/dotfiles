@@ -6,3 +6,22 @@ if [ "${USER}" == "root" ]; then
 else
 	PS1="$(tput setaf 2)\w $(tput setaf 3)(\t)$(tput sgr0)\r\n\u $ "
 fi
+
+
+#OR
+
+#
+# Gives some git-love
+#
+function parse_git_branch () {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+NO_COLOUR="\[\033[0m\]"
+
+PS1="$YELLOW\w\$(parse_git_branch) \[\033[1;36m\][\$(date)]$NO_COLOUR\r\n\u $ "
+source /usr/local/git/contrib/completion/git-completion.bash
